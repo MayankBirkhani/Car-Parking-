@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Enquiry</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        
+    </head>
+    <body>
+        <div class="container">
+        <form>
+          <div id="header" class="jumbotron text-center" style="background-color:#0FEB97;">
+              <h1>Car Parking System</h1>
+              <h2>Enquiry Section</h2>
+          </div>
+            <div class="custom-control custom-radio  text-center" style="height:40px;">
+                <input type="radio" class="custom-control-input" id="rad1" name="radioo" value="check1" required>
+                <label class="custom-control-label" for="rad1"><h5>View currently booked slots</h5><label>
+            </div>
+            <div class="custom-control custom-radio  text-center" style= "padding-left:70px; height:40px;">
+                <input type="radio" class="custom-control-input" id="rad2" name="radioo" value="check2" required>
+                <label class="custom-control-label" for="rad2"><h5>View cars parked on current date</h5></label>
+            </div>
+            <div style="padding-bottom:100px; padding-left:50px; padding-top:35px;">
+                <button type="button" onclick="enquir()" class="btn btn-primary" style="margin-left:500px;">View</button>
+            </div>
+        </form>
+      </div>
+      <div id="test">
+      </div>
+
+      <script>
+          function enquir()
+          {
+              var a = document.getElementById("rad1").checked;
+              var b = document.getElementById("rad2").checked;
+              if(a==true)
+              {
+                  var val1 = document.getElementById("rad1").value;
+                  //document.getElementById("test").innerHTML = val1;
+                  var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function()
+                  {
+                      if(this.readyState == 4 && this.status == 200)
+                      {
+                          document.getElementById("test").innerHTML = this.responseText;
+                      }
+                  };
+                xhttp.open("GET", "enquiry.jsp?data=" +val1, true);
+                xhttp.send();
+              }
+              if(b==true)
+              {
+                  var val2 = document.getElementById("rad2").value;
+                  //document.getElementById("test").innerHTML = val2;
+                  var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function()
+                  {
+                      if(this.readyState == 4 && this.status == 200)
+                      {
+                          document.getElementById("test").innerHTML = this.responseText;
+                      }
+                  };
+                xhttp.open("GET", "enquiry.jsp?data=" +val2, true);
+                xhttp.send();
+              }
+              /*var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function()
+              {
+                 if(this.readyState == 4 && this.status == 200)
+                 {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                 }
+              };
+              xhttp.open("GET", "enquiry1.php?data=" +a, true);
+              xhttp.send();*/
+
+          }
+      </script>
+    </body>
+</html>

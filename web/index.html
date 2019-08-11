@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Login</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <style>
+            .main
+            {
+                margin-left:350px;
+                margin-top:100px;
+                width:400px;
+                box-shadow: 0px 0px 5px #646464;
+                height:500px;
+            }
+            .panel-heading
+            {
+                background-color:gold;
+                height:100px;
+                text-align:center;
+                padding-bottom:150px;
+                color:#333333;
+            }
+            button
+            {
+                margin-left:130px;
+            }
+            input
+            {
+                margin-top:20px;
+            }
+            img
+            {
+                margin-top:-60px;
+            }
+            body
+            {
+               /* background-color:#f2f2f2; */
+                background-image: url("bg.jpg");
+            }
+            button
+            {
+                width:100px;
+                color:white;
+            }
+            .inp
+            {
+                margin-top:25px;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="container cont">
+            <div class="panel panel-default main">
+
+                <div class="panel-heading" style="background-color:#0FEB97;">
+                    <img src="avatar2.png" height="90" width="90"> 
+                    <h1><b>Car Parking</b></h1>
+                </div>
+                <div class="panel-body">
+                    <form name="Login_form" method="POST" action="testlog" >
+                        <div class="form-group inp">
+                            <input class="form-control" type="text" name="uname" placeholder="Username" required style="font-weight:400px; line-height:1.5;">
+                        </div>
+                        <div class="form-group inp">
+                            <input class="form-control" type="password" name="pass" placeholder="Password" required>
+                        </div>
+                        
+                        <div class="form-group inp" >
+                            Select Type
+                            <select name="type"  >
+                                <option>admin </option>
+                                <option>operator </option>
+                            </select>
+                        </div>
+                        <div class="form-group inp">
+                            <input style="margin-left:150px;" class="btn btn-primary" type="submit"  name="sub" value="LOGIN" required>
+                        </div>
+                        <div class="form-group inp">
+                            <a href="#" style="margin-left:130px;">Forgot Password ?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+      </div>
+    </body>
+</html>

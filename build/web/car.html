@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Checkin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron {
+      background-color: #0FEB97;
+      color: #fff;
+      padding: 100px 25px;
+          height:auto;
+    }
+    .container-fluid {
+      padding: 60px 50px;
+    }
+    .bg-grey {
+      background-color: #f6f6f6;
+    }
+    .logo-small {
+      color: #f4511e;
+      font-size: 50px;
+    }
+    .logo {
+      color: #f4511e;
+      font-size: 200px;
+    }
+    @media screen and (max-width: 768px) {
+      .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+      }
+    }
+  </style>
+        
+    </head>
+    <body>
+        <div class="jumbotron text-center">
+  <h1>CAR PARKING</h1>
+  <h3>Easily Manages You Car Parking </h3>
+  <h3>Check In Entry</h3>
+
+</div>
+
+<!-- Container (About Section) -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2><b>Select Floor</b></h2>
+      <button class="btn btn-warning btn-lg" onclick="show_basement('container_base1','base1');">Basement 1</button>
+	  <button class="btn btn-warning btn-lg" onclick="show_basement('container_base2','base2');">Basement 2</button>
+	  <button class="btn btn-warning btn-lg" onclick="show_basement('container_base3','base3');">Basement 3</button>
+    </div>
+    <div class="col-sm-4">
+      <img src="car1.jpg" class="img-thumbnail" />
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-grey" id="container_base1" style="display:none">
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="car2.png" class="img-rounded" />
+    </div>
+    <div class="col-sm-8" id="base1">
+
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-grey" id="container_base2" style="display:none">
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="car2.png" class="img-rounded" />
+    </div>
+    <div class="col-sm-8" id="base2">
+
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-grey" id="container_base3" style="display:none">
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="car2.png" class="img-rounded" />
+    </div>
+    <div class="col-sm-8" id="base3">
+
+    </div>
+  </div>
+</div>
+
+<!-- Container (Services Section) -->
+<div class="container-fluid text-center" style="border-top:1px solid grey">
+  <h4>Copyright @ netcom</h4>
+  <h4></h4>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+     <!-- <span class="glyphicon glyphicon-off logo-small"></span>
+      <h4>POWER</h4>
+      <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-4">
+      <!-- <span class="glyphicon glyphicon-heart logo-small"></span>
+      <h4>LOVE</h4>
+      <p>Lorem ipsum dolor sit amet..</p>-->
+    </div>
+    <div class="col-sm-4">
+      <!-- <span class="glyphicon glyphicon-lock logo-small"></span>
+      <h4>JOB DONE</h4>
+      <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <!--<div class="col-sm-4">
+      <span class="glyphicon glyphicon-leaf logo-small"></span>
+      <h4>GREEN</h4>
+      <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-4">
+      <!--<span class="glyphicon glyphicon-certificate logo-small"></span>
+      <h4>CERTIFIED</h4>
+      <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-4">
+      <!-- <span class="glyphicon glyphicon-wrench logo-small"></span>
+      <h4 style="color:#303030;">HARD WORK</h4>
+      <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Check In Details</h4>
+        </div>
+        <div class="modal-body">
+			<h2 id="checkedin"></h2>
+          Car No. <input type="text" class="form-control" id="txtcar" />
+		  Floor Id <input type="text" class="form-control" id="txtfloor" readonly/>
+		  Slot Id <input type="text" class="form-control" id="txtslot" readonly/>
+		  Date <input type="text" class="form-control" id="txtdate" readonly/>
+		  Time <input type="text" class="form-control" id="txttime" readonly/>
+        </div>
+        <div class="modal-footer">
+			<button type="button" class="btn btn-danger" onclick="checkin_entry(this)" >Check In</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload_it();">Close</button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+function reload_it()
+{
+	location.reload();
+
+}
+
+
+
+function show_basement(a,b)
+{
+	//alert(a);
+	//alert(b);
+	window.scrollBy(0,1000);
+	document.getElementById(a).style.display="block";
+	var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById(b).innerHTML =
+				this.responseText;
+			}
+		};
+		xhttp.open("GET", "show_basement_slots.jsp?base="+b, true);
+		xhttp.send();
+}
+
+function checkin(date_check,time_check,slot,floor)
+{
+	document.getElementById("txtfloor").value = floor;
+	document.getElementById("txtdate").value = date_check;
+	document.getElementById("txttime").value = time_check;
+	document.getElementById("txtslot").value = slot.innerHTML;
+
+}
+
+function checkin_entry(a)
+{
+	var slot=document.getElementById("txtslot").value;
+	var floor=document.getElementById("txtfloor").value;
+	var time_c=document.getElementById("txttime").value;
+	var date_c=document.getElementById("txtdate").value;
+	var car=document.getElementById("txtcar").value;
+
+	var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("checkedin").innerHTML =
+				this.responseText;
+				document.getElementById('txtcar').disabled="true";
+
+				a.disabled="true";
+
+			}
+		};
+		xhttp.open("GET", "checkin_entry.jsp?slot="+slot+"&floor="+floor+"&time_c="+time_c+"&date_c="+date_c+"&car="+car, true);
+		xhttp.send();
+
+
+}
+
+</script>
+        
+    </body>
+</html>
